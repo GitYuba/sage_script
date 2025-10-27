@@ -1,7 +1,8 @@
 
 ###
 ## Importing SAGE files "pythonically" from github
-## load(path_to_sage_file)
+## load(path_to_sage_file):
+## load("https://raw.githubusercontent.com/medbednaoui/sage_script/refs/heads/main/Geometries/coord.sage")
 
 ###
 ##
