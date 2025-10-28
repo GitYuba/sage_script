@@ -68,7 +68,7 @@ def base_adaptee(rep_proj):
     if d_A*d_B*d_C*d_D == 0:
         print("Les points entrés ne forment pas un repère projectif !!!")
         print("Entrer des points qui forment un repère projectif.")
-        return      
+        quit()    
     # Définir les variables 
     var('a,b,c')
     # Expression des équations
