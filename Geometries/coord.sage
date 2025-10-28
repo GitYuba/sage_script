@@ -42,12 +42,13 @@ def coord_bary(rep_aff, pt):
     
 ###
 ##
-def base_adaptee(rep_proj, pt):
+def coord_proj(rep_proj, pt):
     """
     Trouver la base adaptée au repère projectif.
     
     Args:
-    rep_proj = [[1,2,1],[1,-1,2],[0,1,3],[1,1,3]] (
+    rep_proj = [[1,2,1],[1,-1,2],[0,1,3],[1,1,3]] 
+    pt = [3,2,1]
     A = vector([1,2,1]) •••
     Où les quatre points forment un repère projectif du plan projectif
     
