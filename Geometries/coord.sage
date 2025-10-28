@@ -82,4 +82,14 @@ def base_adaptee(rep_proj):
     e2 = s[0][1].rhs() * B
     e3 = s[0][2].rhs() * C
     e4 = e1 + e2 + e3 
-    return [e1,e2,e3,e4]
+    # Détermination de la base adaptée
+    L = [e1,e2,e3,e4]
+    # Définir les équations
+    eq0 = a * L[0][0] + b * L[1][0] + c * L[2][0] == P[0] 
+    eq1 = a * L[0][1] + b * L[1][1] + c * L[2][1] == P[1]
+    eq2 = a * L[0][2] + b * L[1][2] + c * L[2][2] == P[2]
+    # Calculer les coordonnées projectives de P par rapport à (A, B, C, D)
+    S = solve([eq0, eq1, eq2],a, b, c)
+
+    # Retourner les coord proj du point P dans le repère proj (A,B,C,D) (Get the right-hand side of solutions)
+    return [S[0][0].rhs(), S[0][1].rhs(), S[0][2].rhs()]
