@@ -42,7 +42,7 @@ def coord_bary(rep_aff, pt):
     
 ###
 ##
-def base_adaptee(rep_proj):
+def base_adaptee(rep_proj, pt):
     """
     Trouver la base adaptée au repère projectif.
     
@@ -60,6 +60,7 @@ def base_adaptee(rep_proj):
     B = vector(rep_proj[1])
     C = vector(rep_proj[2])
     D = vector(rep_proj[3])
+    P = vector(pt)
     # rep_proj doit être un repère projectif
     d_A = det(matrix([B,C,D]))
     d_B = det(matrix([A,C,D]))
