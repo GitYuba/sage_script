@@ -95,3 +95,41 @@ def coord_proj(rep_proj, pt):
 
     # Retourner les coord proj du point P dans le repère proj (A,B,C,D) (Get the right-hand side of solutions)
     return [S[0][0].rhs(), S[0][1].rhs(), S[0][2].rhs()]
+
+###
+##
+def birapport(a,b,c,d):
+    """
+    Calcul du birapport de quatre points alignés de l'espace projectif P(K^4) (QQ ou RR ou CC ou SR).
+    
+    Args:
+    (a,b,c,d) = ([1,-1,2,0],[0,1,3,0],[1,0,5,0],[-1,2,1,0])
+    Où les quatre vecteurs forment une famille de rang 2 (points projectifs alignés)
+    
+    Returns:
+    Le birapport [a,b,c,d]
+    """
+    # Vérifier si les points associés à (a,b,c,d) sont bien alignés.
+    M = matrix([a,b,c,d])
+    if M.rank() != 2:
+        print("Les points entrés ne sont pas alignés !!!")
+        print("Entrer des points alignés (projectivement)")
+        return 
+    # On crée une algèbre extérieure et on exprime les vecteurs associés à a,b,c,d
+    E.<e1, e2, e3, e4> = ExteriorAlgebra(QQ)
+    aa = a[0]*e1 + a[1]*e2 + a[2]*e3 + a[3]*e4
+    bb = b[0]*e1 + b[1]*e2 + b[2]*e3 + b[3]*e4
+    cc = c[0]*e1 + c[1]*e2 + c[2]*e3 + c[3]*e4
+    dd = d[0]*e1 + d[1]*e2 + d[2]*e3 + d[3]*e4
+    # On calcule les produits extérieurs requis par le birapport
+    A = (cc*aa).coefficients()
+    B = (dd*aa).coefficients()
+    C = (cc*bb).coefficients()
+    D = (dd*bb).coefficients()
+    # Extraire le premier coefficient des produits extérieurs non nul
+    p = next(item for item in A if item != 0)
+    q = next(item for item in B if item != 0)
+    r = next(item for item in C if item != 0)
+    s = next(item for item in D if item != 0)
+    # Affiche le birapport [a,b,c,d]
+    return (p/q)/(r/s)
