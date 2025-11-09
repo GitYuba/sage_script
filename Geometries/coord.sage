@@ -109,6 +109,7 @@ def birapport(a,b,c,d):
     Returns:
     Le birapport [a,b,c,d]
     """
+
     # Vérifier si les points associés à (a,b,c,d) sont bien alignés.
     M = matrix([a,b,c,d])
     if M.rank() != 2:
