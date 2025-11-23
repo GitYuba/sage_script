@@ -117,7 +117,7 @@ def birapport(a,b,c,d):
         print("Entrer des points alignés (projectivement)")
         return 
     # On crée une algèbre extérieure et on exprime les vecteurs associés à a,b,c,d
-    E.<e1, e2, e3, e4> = ExteriorAlgebra(QQ)
+    E.<e1, e2, e3, e4> = ExteriorAlgebra(SR)
     aa = a[0]*e1 + a[1]*e2 + a[2]*e3 + a[3]*e4
     bb = b[0]*e1 + b[1]*e2 + b[2]*e3 + b[3]*e4
     cc = c[0]*e1 + c[1]*e2 + c[2]*e3 + c[3]*e4
